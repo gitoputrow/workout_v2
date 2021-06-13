@@ -12,14 +12,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val ambil = intent
         var bundle=Bundle()
-        bundle.putString("name","hai")
-
+        bundle.putString("username",ambil.getStringExtra("username").toString())
         val workoutFragment = WorkoutFragment()
         val profileFragment = ProfileFragment()
         val homeFragment = HomeFragment()
 
         workoutFragment.arguments = bundle
+        profileFragment.arguments = bundle
+        homeFragment.arguments = bundle
 
         MakeCurrentFragment(workoutFragment)
 

@@ -15,6 +15,7 @@ import android.widget.ImageView
 
 class WorkoutFragment : Fragment() {
     var cekk = true
+    var muscle = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,7 +29,7 @@ class WorkoutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ambil :String = this.requireArguments().getString("name").toString()
+        val ambil :String = this.requireArguments().getString("username").toString()
         val full :CheckBox = view.findViewById(R.id.full)
         val abs :CheckBox = view.findViewById(R.id.abs)
         val chest :CheckBox = view.findViewById(R.id.chest)
@@ -39,32 +40,36 @@ class WorkoutFragment : Fragment() {
         Log.d(TAG,ambil)
 
         full.setOnClickListener {
-            check(gambar,full,chest,arm,abs,leg,R.drawable.gambar_full1)
+            check(gambar,full,chest,arm,abs,leg,R.drawable.gambar_full1,"Full body")
             animbutton(full)
         }
 
         abs.setOnClickListener {
-            check(gambar,abs,chest,arm,full,leg,R.drawable.gambar_perut1)
+            check(gambar,abs,chest,arm,full,leg,R.drawable.gambar_perut1,"Abs")
+            ambil
             animbutton(abs)
         }
 
         chest.setOnClickListener {
-            check(gambar,chest,abs,arm,full,leg,R.drawable.gambar_dada1)
+            check(gambar,chest,abs,arm,full,leg,R.drawable.gambar_dada1,"Chest")
             animbutton(chest)
         }
 
         arm.setOnClickListener {
-            check(gambar,arm,abs,chest,full,leg,R.drawable.gambar_tangan1)
+            check(gambar,arm,abs,chest,full,leg,R.drawable.gambar_tangan1,"Arm")
             animbutton(arm)
         }
 
         leg.setOnClickListener {
-            check(gambar,leg,chest,arm,full,abs,R.drawable.gambar_kaki1)
+            check(gambar,leg,chest,arm,full,abs,R.drawable.gambar_kaki1,"Leg")
             animbutton(leg)
         }
 
         view.findViewById<ImageView>(R.id.button).setOnClickListener {
-            startActivity(Intent(activity,LevelPick::class.java))
+            val ahli = Intent(activity,LevelPick::class.java)
+            ahli.putExtra("username",ambil)
+            ahli.putExtra("muscle",muscle)
+            startActivity(ahli)
             requireActivity().finish()
         }
     }
@@ -75,15 +80,17 @@ class WorkoutFragment : Fragment() {
         cekk = true
     }
 
-    fun check(vsble :ImageView, cektrue :CheckBox, cekfalse1 :CheckBox, cekfalse2 :CheckBox, cekfalse3 :CheckBox, cekfalse4 : CheckBox,x :Int) {
+    fun check(vsble :ImageView, cektrue :CheckBox, cekfalse1 :CheckBox, cekfalse2 :CheckBox, cekfalse3 :CheckBox, cekfalse4 : CheckBox,x :Int,musclee :String) {
         if (cektrue.isChecked == true){
             vsble.setImageResource(x)
+            muscle = musclee
             cekfalse1.isChecked = false
             cekfalse2.isChecked = false
             cekfalse3.isChecked = false
             cekfalse4.isChecked = false
         }
         else{
+            muscle = ""
             vsble.setImageResource(R.drawable.gambar1)
         }
     }

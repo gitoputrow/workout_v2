@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Workout_V2">
-        <activity android:name=".workout_list"></activity>
+        <activity android:name=".post"></activity>
+        <activity android:name=".Selesai" />
+        <activity android:name=".RestActivity" />
+        <activity android:name=".Workout_MainActivity" />
+        <activity android:name=".workout_list_hard" />
+        <activity android:name=".workout_list_med" />
+        <activity android:name=".workout_list" />
         <activity android:name=".DayActivity" />
         <activity android:name=".LevelPick" />
         <activity android:name=".register" />

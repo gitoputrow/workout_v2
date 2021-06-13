@@ -49,11 +49,21 @@ class register : AppCompatActivity() {
                                 hashMapdata.put("username",findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString())
                                 hashMapdata.put("password",findViewById<TextInputEditText>(R.id.passwordinput_regist).text.toString())
                                 hashMapdata.put("email",findViewById<TextInputEditText>(R.id.emailinput_regist).text.toString())
+                                var hashMapmuscle = HashMap<String,Any>()
+                                hashMapmuscle.put("full","0%")
+                                hashMapmuscle.put("abs","0%")
+                                hashMapmuscle.put("chest","0%")
+                                hashMapmuscle.put("arm","0%")
+                                hashMapmuscle.put("leg","0%")
                                 database.child("data${findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString()}")
                                         .setValue(hashMapdata)
                                         .addOnSuccessListener {
-                                            startActivity(Intent(this@register,Login::class.java))
-                                            finish()
+                                            database.child("data${findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString()}")
+                                                    .child("MuscleProgress")
+                                                    .setValue(hashMapmuscle).addOnSuccessListener {
+                                                        startActivity(Intent(this@register,Login::class.java))
+                                                        finish()
+                                                    }
                                         }
                             }
                         }

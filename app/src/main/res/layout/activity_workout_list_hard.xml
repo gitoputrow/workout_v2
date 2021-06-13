@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00353A"
+    tools:context=".workout_list_hard">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="900dp"
+        android:layout_height="900dp"
+        android:alpha="0.2"
+        android:translationZ="-1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_regist" />
+
+
+    <TextView
+        android:id="@+id/day_name_hard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Day 1"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
+
+    <TextView
+        android:id="@+id/level_name_hard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level : Hard"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/day_name_hard"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="@+id/day_name_hard"
+        app:layout_constraintTop_toBottomOf="@+id/day_name_hard"
+        app:layout_constraintVertical_bias="0.011" />
+
+    <ImageView
+        android:id="@+id/back_workoutlist_hard"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/day_name_hard"
+        app:layout_constraintEnd_toStartOf="@+id/day_name_hard"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/backarrow_white" />
+
+    <ScrollView
+        android:id="@+id/scrollView2_hard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        android:background="#00545E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/level_name_hard"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textvie_jdul_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Workout List"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.028" />
+
+            <TextView
+                android:id="@+id/nama_workoutlist_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Crunch Sit Up"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toEndOf="@+id/workout1_hard"
+                app:layout_constraintTop_toTopOf="@+id/workout1_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/nama_workoutlist2_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crunch Sit Up"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toEndOf="@+id/workout2_hard"
+                app:layout_constraintTop_toTopOf="@+id/workout2_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/nama_workoutlist3_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crunch Sit Up"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toEndOf="@+id/workout2_hard"
+                app:layout_constraintTop_toTopOf="@+id/workout3_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/nama_workoutlist4_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crunch Sit Up"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toEndOf="@+id/workout4_hard"
+                app:layout_constraintTop_toTopOf="@+id/workout4_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/nama_workoutlist5_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crunch Sit Up"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toEndOf="@+id/workout5_hard"
+                app:layout_constraintTop_toTopOf="@+id/workout5_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/nama_workoutlist6_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crunch Sit Up"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toEndOf="@+id/workout6_hard"
+                app:layout_constraintTop_toTopOf="@+id/workout6_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/nama_workoutlist7_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crunch Sit Up"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toEndOf="@+id/workout7_hard"
+                app:layout_constraintTop_toTopOf="@+id/workout7_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/nama_workoutlist8_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crunch Sit Up"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toEndOf="@+id/workout8_hard"
+                app:layout_constraintTop_toTopOf="@+id/workout8_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/reps_workoutlist_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/workout1_hard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/workout1_hard"
+                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist_hard"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/reps_workoutlist2_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/workout2_hard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/workout1_hard"
+                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist2_hard"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/reps_workoutlist3_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/workout3_hard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/workout3_hard"
+                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist3_hard"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/reps_workoutlist4_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/workout4_hard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/workout4_hard"
+                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist4_hard"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/reps_workoutlist5_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/workout5_hard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/workout5_hard"
+                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist5_hard"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/reps_workoutlist6_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/workout6_hard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/workout6_hard"
+                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist6_hard"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/reps_workoutlist7_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/workout7_hard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/workout7_hard"
+                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist7_hard"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/reps_workoutlist8_hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/workout8_hard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toEndOf="@+id/workout7_hard"
+                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist8_hard"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/workout1_hard"
+                android:layout_width="140dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/crunchsitup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textvie_jdul_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/workout2_hard"
+                android:layout_width="140dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/crunchsitup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout1_hard"
+                app:layout_constraintVertical_bias="0.02" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/workout3_hard"
+                android:layout_width="140dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/crunchsitup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout2_hard"
+                app:layout_constraintVertical_bias="0.045" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/workout4_hard"
+                android:layout_width="140dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="29dp"
+                android:src="@drawable/crunchsitup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout3_hard"
+                app:layout_constraintVertical_bias="0.024" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/workout5_hard"
+                android:layout_width="140dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="29dp"
+                android:src="@drawable/crunchsitup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout4_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/workout6_hard"
+                android:layout_width="140dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="29dp"
+                android:src="@drawable/crunchsitup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout5_hard"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/workout7_hard"
+                android:layout_width="140dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/crunchsitup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout6_hard"
+                app:layout_constraintVertical_bias="0.09" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/workout8_hard"
+                android:layout_width="140dp"
+                android:layout_marginTop="29dp"
+                android:layout_height="80dp"
+                android:src="@drawable/crunchsitup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout7_hard"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:textColor="@color/white"
+        android:backgroundTint="#008A97"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
