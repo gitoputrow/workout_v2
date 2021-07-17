@@ -101,7 +101,6 @@
                 android:id="@+id/nama_workoutlist_med"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:text="Crunch Sit Up"
                 android:textColor="@color/white"
                 android:textSize="24dp"
@@ -198,8 +197,8 @@
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/workout1_med"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.043"
-                app:layout_constraintStart_toEndOf="@+id/workout1_med"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/nama_workoutlist_med"
                 app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist_med"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -213,8 +212,8 @@
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/workout2_med"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.043"
-                app:layout_constraintStart_toEndOf="@+id/workout1_med"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/nama_workoutlist2_med"
                 app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist2_med"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -243,8 +242,8 @@
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/workout4_med"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.043"
-                app:layout_constraintStart_toEndOf="@+id/workout4_med"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/nama_workoutlist4_med"
                 app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist4_med"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -258,8 +257,8 @@
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/workout5_med"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.043"
-                app:layout_constraintStart_toEndOf="@+id/workout5_med"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/nama_workoutlist5_med"
                 app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist5_med"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -273,10 +272,11 @@
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/workout6_med"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.043"
-                app:layout_constraintStart_toEndOf="@+id/workout6_med"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/nama_workoutlist6_med"
                 app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist6_med"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="1.0
+" />
 
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/workout1_med"

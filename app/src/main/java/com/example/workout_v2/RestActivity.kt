@@ -14,7 +14,7 @@ class RestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rest)
-        findViewById<Chronometer>(R.id.time_rest).base = SystemClock.elapsedRealtime() + 30000
+        findViewById<Chronometer>(R.id.time_rest).base = SystemClock.elapsedRealtime() + 31000
         findViewById<Chronometer>(R.id.time_rest).setCountDown(true)
         findViewById<Chronometer>(R.id.time_rest).start()
         findViewById<Button>(R.id.extratime).setOnClickListener {

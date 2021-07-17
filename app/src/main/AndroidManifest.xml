@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Workout_V2">
-        <activity android:name=".post"></activity>
+        <activity android:name=".DetailPost"></activity>
+        <activity android:name=".feed_layout" />
+        <activity android:name=".post" />
         <activity android:name=".Selesai" />
         <activity android:name=".RestActivity" />
         <activity android:name=".Workout_MainActivity" />

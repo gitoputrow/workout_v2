@@ -46,7 +46,6 @@ class WorkoutFragment : Fragment() {
 
         abs.setOnClickListener {
             check(gambar,abs,chest,arm,full,leg,R.drawable.gambar_perut1,"Abs")
-            ambil
             animbutton(abs)
         }
 

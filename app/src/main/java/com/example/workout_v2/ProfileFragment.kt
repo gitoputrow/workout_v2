@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -41,12 +42,15 @@ class ProfileFragment : Fragment() {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.hasChild("postingan")){
+                    view.findViewById<TextView>(R.id.jumlah_post).setText(snapshot.child("postingan").childrenCount.toInt().toString())
+                }
                 view.findViewById<TextView>(R.id.name_profile).setText(snapshot.child("name").value.toString())
-                view.findViewById<TextView>(R.id.full_progress).setText(snapshot.child("MuscleProgress").child("full").value.toString())
-                view.findViewById<TextView>(R.id.abs_progress).setText(snapshot.child("MuscleProgress").child("abs").value.toString())
-                view.findViewById<TextView>(R.id.arm_progress).setText(snapshot.child("MuscleProgress").child("arm").value.toString())
-                view.findViewById<TextView>(R.id.leg_progress).setText(snapshot.child("MuscleProgress").child("leg").value.toString())
-                view.findViewById<TextView>(R.id.chest_progress).setText(snapshot.child("MuscleProgress").child("chest").value.toString())
+                view.findViewById<TextView>(R.id.full_progress).setText("${snapshot.child("MuscleProgress").child("full body").value.toString()}%")
+                view.findViewById<TextView>(R.id.abs_progress).setText("${snapshot.child("MuscleProgress").child("abs").value.toString()}%")
+                view.findViewById<TextView>(R.id.arm_progress).setText("${snapshot.child("MuscleProgress").child("arm").value.toString()}%")
+                view.findViewById<TextView>(R.id.leg_progress).setText("${snapshot.child("MuscleProgress").child("leg").value.toString()}%")
+                view.findViewById<TextView>(R.id.chest_progress).setText("${snapshot.child("MuscleProgress").child("chest").value.toString()}%")
             }
 
         })

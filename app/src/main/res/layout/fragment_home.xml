@@ -56,6 +56,7 @@
         android:id="@+id/upload_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:translationZ="20dp"
         android:src="@drawable/upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +68,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_feed"
         android:layout_width="match_parent"
-        android:layout_height="657dp"
+        android:layout_height="590dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
