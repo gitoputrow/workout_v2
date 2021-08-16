@@ -44,6 +44,9 @@ class post : AppCompatActivity() {
         findViewById<ImageView>(R.id.back_post).setOnClickListener {
             val ahli = Intent(this,MainActivity::class.java)
             ahli.putExtra("username",ambil.getStringExtra("username").toString())
+            ahli.putExtra("current","home")
+            finish()
+            startActivity(ahli)
         }
         findViewById<ImageView>(R.id.upload_post).setOnClickListener {
             if (findViewById<EditText>(R.id.nulis_sp).text.isEmpty()){
@@ -68,6 +71,7 @@ class post : AppCompatActivity() {
                                             .child(id).setValue(hashMapisi).addOnSuccessListener {
                                                 val ahli = Intent(this@post,MainActivity::class.java)
                                                 ahli.putExtra("username",ambil.getStringExtra("username").toString())
+                                                ahli.putExtra("current","home")
                                                 finish()
                                                 startActivity(ahli)
                                             }

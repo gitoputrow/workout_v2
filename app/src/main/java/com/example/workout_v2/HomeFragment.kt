@@ -14,7 +14,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.contentValuesOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -30,6 +32,8 @@ class HomeFragment : Fragment(), clicklistener {
     private val list_feed = ArrayList<feeditem>()
     val database = FirebaseDatabase.getInstance().getReference()
     var username = ""
+    data class list_class(var foto: String, var username: String, var childname: String, var name: String, var text: String, var date: String,var fp: String)
+    val listt = mutableListOf<list_class>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -61,7 +65,17 @@ class HomeFragment : Fragment(), clicklistener {
             })
             builder.show()
         }
-        recyclerViewInflater()
+        view.findViewById<ImageView>(R.id.search_but).setOnClickListener {
+            listt.clear()
+            list_feed.clear()
+            if (view.findViewById<TextView>(R.id.search_text).text.isEmpty()){
+                recyclerViewInflater("")
+            }
+            else{
+                recyclerViewInflater(view.findViewById<TextView>(R.id.search_text).text.toString())
+            }
+        }
+        recyclerViewInflater("")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -90,51 +104,84 @@ class HomeFragment : Fragment(), clicklistener {
         }
     }
 
-    data class list_class(var foto: String, var username: String, var childname: String, var name: String, var text: String, var date: String)
+    private fun recyclerViewInflater(cari : String) {
+        if (cari.equals("")) {
+            database.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
 
-    val listt = mutableListOf<list_class>()
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (childmain in snapshot.children) {
+                        var childdata = childmain.key.toString()
+                        var username = snapshot.child(childdata).child("username").value.toString()
+                        var name = snapshot.child(childdata).child("name").value.toString()
+                        var fp :String = snapshot.child(childdata).child("fp").value.toString()
+                        if (snapshot.child(childdata).hasChild("postingan")) {
+                            var text = ""
+                            for (child in snapshot.child(childdata).child("postingan").children) {
+                                val childname = child.key.toString()
+                                var childnametext = snapshot.child(childdata).child("postingan").child(childname).child("text").value.toString()
+                                var date = snapshot.child(childdata).child("postingan").child(childname).child("date").value.toString()
+                                var foto = snapshot.child(childdata).child("postingan").child(childname).child("foto").value.toString()
+                                if (childnametext.length > 20) {
+                                    text = "${childnametext.removeRange(20, childnametext.length)}...."
+                                } else {
+                                    text = childnametext
+                                }
+                                listt.add(list_class(foto, username, childname, name, text, date,fp))
+                            }
+                        }
+                    }
+                    listt.sortByDescending { listClass -> listClass.date }
+                    Log.d(ContentValues.TAG, listt.toString());
+                    for (i in 0 until listt.size) {
+                        Log.d(ContentValues.TAG, i.toString())
+                        list(i, listt)
+                    }
 
-    private fun recyclerViewInflater() {
-        database.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+                }
+            })
+        }
+        else{
+            database.child("data$cari").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (childmain in snapshot.children) {
-                    var childdata = childmain.key.toString()
-                    var username = snapshot.child(childdata).child("username").value.toString()
-                    var name = snapshot.child(childdata).child("name").value.toString()
-                    if (snapshot.child(childdata).hasChild("postingan")) {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var username = snapshot.child("username").value.toString()
+                    var name = snapshot.child("name").value.toString()
+                    var fp :String = snapshot.child("fp").value.toString()
+                    if (snapshot.hasChild("postingan")) {
                         var text = ""
-                        for (child in snapshot.child(childdata).child("postingan").children) {
+                        for (child in snapshot.child("postingan").children) {
                             val childname = child.key.toString()
-                            var childnametext = snapshot.child(childdata).child("postingan").child(childname).child("text").value.toString()
-                            var date = snapshot.child(childdata).child("postingan").child(childname).child("date").value.toString()
-                            var foto = snapshot.child(childdata).child("postingan").child(childname).child("foto").value.toString()
+                            var childnametext = snapshot.child("postingan").child(childname).child("text").value.toString()
+                            var date = snapshot.child("postingan").child(childname).child("date").value.toString()
+                            var foto = snapshot.child("postingan").child(childname).child("foto").value.toString()
                             if (childnametext.length > 20) {
                                 text = "${childnametext.removeRange(20, childnametext.length)}...."
                             } else {
                                 text = childnametext
                             }
-                            listt.add(list_class(foto, username, childname, name, text, date))
+                            listt.add(list_class(foto, username, childname, name, text, date,fp))
                         }
                     }
+                    listt.sortByDescending { listClass -> listClass.date }
+                    Log.d(ContentValues.TAG, listt.toString());
+                    for (i in 0 until listt.size) {
+                        Log.d(ContentValues.TAG, i.toString())
+                        list(i, listt)
+                    }
                 }
-                listt.sortByDescending { listClass -> listClass.date }
-                Log.d(ContentValues.TAG, listt.toString());
-                for (i in 0 until listt.size) {
-                    Log.d(ContentValues.TAG, i.toString())
-                    list(i, listt)
-                }
-
-            }
-        })
+            })
+        }
 
     }
 
     fun list(i: Int, listt: MutableList<list_class>) {
-        list_feed.add(feeditem(listt[i].foto, listt[i].name, listt[i].username, listt[i].childname, listt[i].text))
+        list_feed.add(feeditem(listt[i].foto, listt[i].name, listt[i].username, listt[i].childname, listt[i].text,listt[i].fp))
         requireView().findViewById<RecyclerView>(R.id.rv_feed).setHasFixedSize(true)
         requireView().findViewById<RecyclerView>(R.id.rv_feed).layoutManager = LinearLayoutManager(this.requireContext())
         val adapter = feedadapter(list_feed, this)
@@ -153,6 +200,7 @@ class HomeFragment : Fragment(), clicklistener {
         pindah.putExtra("username", username)
         pindah.putExtra("postid", item.postid)
         pindah.putExtra("foto", item.photo)
+        pindah.putExtra("fp", item.fp)
         startActivity(pindah)
         requireActivity().finish()
     }

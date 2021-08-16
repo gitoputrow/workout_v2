@@ -7,8 +7,28 @@
     android:background="#4a4848"
     tools:context=".ProfileFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progressbar_bg"
+        android:visibility="invisible"
+        android:translationZ="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#90FFFFFF">
+        <ProgressBar
+            android:id="@+id/progressBar_profile"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:translationZ="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,40 +40,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Logout"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="15dp"
-                android:textColor="#BABABA"/>
+                android:layout_marginTop="10dp"
+                android:text="Logout"
+                android:textColor="#BABABA"
+                android:textSize="15dp" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/foto_profile"
-                android:src="@drawable/profile"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:src="@drawable/profile" />
+
             <TextView
                 android:id="@+id/username_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Username"
+                android:textColor="#36A6F1"
                 android:textSize="23dp"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textColor="#36A6F1" />
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/name_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="name"
-                android:textSize="19dp"
-                android:layout_gravity="center"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,6 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp">
+
                     <TextView
                         android:id="@+id/tv_post"
                         android:layout_width="wrap_content"
@@ -80,6 +105,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
+
                     <TextView
                         android:id="@+id/jumlah_post"
                         android:layout_width="wrap_content"
@@ -98,6 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="180dp">
+
                     <TextView
                         android:id="@+id/tv_like"
                         android:layout_width="wrap_content"
@@ -112,6 +139,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
+
                     <TextView
                         android:id="@+id/jumlah_like"
                         android:layout_width="wrap_content"
@@ -127,29 +155,30 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_marginTop="25dp"
                 android:layout_width="200dp"
                 android:layout_height="160dp"
-                android:src="@drawable/musclep"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/musclep" />
 
             <TextView
                 android:id="@+id/tv_mp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
                 android:text="MUSCLE PROGRESS"
-                android:textStyle="bold"
                 android:textColor="#4C9DD3"
                 android:textSize="25dp"
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center" />
+                android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="30dp"
                 android:id="@+id/layout_progress_full"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
+
                 <ImageView
                     android:id="@+id/gambar_full"
                     android:layout_width="200dp"
@@ -164,8 +193,8 @@
                     android:id="@+id/tv_full"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="FULL BODY"
                     android:layout_marginLeft="1dp"
+                    android:text="FULL BODY"
                     android:textColor="#4C9DD3"
                     android:textSize="30dp"
                     android:textStyle="bold"
@@ -174,6 +203,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/gambar_full"
                     app:layout_constraintVertical_bias="0.0" />
+
                 <TextView
                     android:id="@+id/full_progress"
                     android:layout_width="wrap_content"
@@ -188,11 +218,12 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="30dp"
                 android:id="@+id/layout_progress_abs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
+
                 <ImageView
                     android:id="@+id/gambar_abs"
                     android:layout_width="200dp"
@@ -207,8 +238,8 @@
                     android:id="@+id/tv_abs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ABS"
                     android:layout_marginLeft="1dp"
+                    android:text="ABS"
                     android:textColor="#4C9DD3"
                     android:textSize="30dp"
                     android:textStyle="bold"
@@ -217,6 +248,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/gambar_abs"
                     app:layout_constraintVertical_bias="0.0" />
+
                 <TextView
                     android:id="@+id/abs_progress"
                     android:layout_width="wrap_content"
@@ -231,11 +263,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="20dp"
                 android:id="@+id/layout_progress_chest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
 
                 <ImageView
                     android:id="@+id/gambar_chest"
@@ -252,8 +284,8 @@
                     android:id="@+id/tv_chest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CHEST"
                     android:layout_marginLeft="1dp"
+                    android:text="CHEST"
                     android:textColor="#4C9DD3"
                     android:textSize="30dp"
                     android:textStyle="bold"
@@ -277,11 +309,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="20dp"
                 android:id="@+id/layout_progress_arm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
 
                 <ImageView
                     android:id="@+id/gambar_arm"
@@ -298,8 +330,8 @@
                     android:id="@+id/tv_arm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ARM n SHOULDER"
                     android:layout_marginLeft="1dp"
+                    android:text="ARM n SHOULDER"
                     android:textColor="#4C9DD3"
                     android:textSize="30dp"
                     android:textStyle="bold"
@@ -323,12 +355,12 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="120dp"
                 android:id="@+id/layout_progress_leg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="120dp">
 
                 <ImageView
                     android:id="@+id/gambar_leg"
@@ -345,8 +377,8 @@
                     android:id="@+id/tv_leg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LEGS"
                     android:layout_marginLeft="1dp"
+                    android:text="LEGS"
                     android:textColor="#4C9DD3"
                     android:textSize="30dp"
                     android:textStyle="bold"

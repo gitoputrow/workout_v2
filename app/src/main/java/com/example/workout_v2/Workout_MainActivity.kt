@@ -49,17 +49,17 @@ class Workout_MainActivity : AppCompatActivity() {
             i++
             if (ambil.getStringExtra("level").toString().equals("easy")){
                 if (i == 4){
-//                    database.child("data${ambil.getStringExtra("username").toString()}").child("MuscleProgress")
-//                            .child(ambil.getStringExtra("muscle").toString()).addListenerForSingleValueEvent(object : ValueEventListener{
-//                                override fun onCancelled(error: DatabaseError) {
-//                                    TODO("Not yet implemented")
-//                                }
-//
-//                                override fun onDataChange(snapshot: DataSnapshot) {
-//                                    var persen = snapshot.value.toString().toInt()
-//                                    muscle_kondisi(persen,ambil)
-//                                }
-//                            })
+                    database.child("data${ambil.getStringExtra("username").toString()}").child("MuscleProgress")
+                            .child(ambil.getStringExtra("muscle").toString().toLowerCase()).addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onCancelled(error: DatabaseError) {
+                                    TODO("Not yet implemented")
+                                }
+
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    var persen = snapshot.value.toString().toInt()
+                                    muscle_kondisi(persen,ambil)
+                                }
+                            })
                     var ahli = Intent(this,Selesai::class.java)
                     ahli.putExtra("username",ambil.getStringExtra("username").toString())
                     startActivity(ahli)
@@ -129,14 +129,19 @@ class Workout_MainActivity : AppCompatActivity() {
     fun muscle_kondisi(persen:Int,ambil: Intent){
         val kondisi = listOf<Int>(0,4,9,14,18,23,28,33,37,42,47,51,56,61,66,70,74,79,84,89,94)
         val syarat = listOf<Int>(4,9,14,18,23,28,33,37,42,47,51,56,61,66,70,74,79,84,89,94,100)
-        for (i in 0..kondisi.size-1){
-            if (persen == kondisi[i]){
-
-            }
+        var index = 0
+        if (ambil.getStringExtra("level").toString().equals("easy")){
+            index = ambil.getStringExtra("day").toString().toInt() - 1
         }
-        if (kondisi.contains(persen)){
+        if (ambil.getStringExtra("level").toString().equals("medium")){
+            index = ambil.getStringExtra("day").toString().toInt() + 6
+        }
+        if (ambil.getStringExtra("level").toString().equals("medium")){
+            index = ambil.getStringExtra("day").toString().toInt() + 13
+        }
+        if (persen == kondisi[index]) {
             database.child("data${ambil.getStringExtra("username").toString()}").child("MuscleProgress")
-                    .child(ambil.getStringExtra("muscle").toString()).setValue((syarat.get(kondisi.indexOf(persen))).toString())
+                    .child(ambil.getStringExtra("muscle").toString().toLowerCase()).setValue((syarat.get(kondisi.indexOf(persen))).toString())
         }
     }
 }

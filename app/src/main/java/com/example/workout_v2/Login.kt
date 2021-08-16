@@ -35,6 +35,7 @@ class Login : AppCompatActivity() {
                            if (snapshot.child("data$username").child("password").value.toString().equals(passwword)){
                                val pindah = Intent(this@Login,MainActivity::class.java)
                                pindah.putExtra("username",username)
+                               pindah.putExtra("current","workout")
                                startActivity(pindah)
                            }
                            else{

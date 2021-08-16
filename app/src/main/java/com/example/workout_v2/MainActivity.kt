@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        
         val ambil = intent
         var bundle=Bundle()
         bundle.putString("username",ambil.getStringExtra("username").toString())
@@ -23,7 +23,12 @@ class MainActivity : AppCompatActivity() {
         profileFragment.arguments = bundle
         homeFragment.arguments = bundle
 
-        MakeCurrentFragment(workoutFragment)
+        if (ambil.getStringExtra("current").equals("workout")){
+            MakeCurrentFragment(workoutFragment)
+        }
+        else{
+            MakeCurrentFragment(homeFragment)
+        }
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnNavigationItemSelectedListener {
             when (it.itemId){

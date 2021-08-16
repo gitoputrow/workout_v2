@@ -10,12 +10,14 @@ import com.example.workout_v2.feeditem
 import com.google.android.material.textview.MaterialTextView
 import com.google.android.material.imageview.ShapeableImageView
 import coil.load
+import de.hdodenhof.circleimageview.CircleImageView
 
 
 class feedadapter(private val item : List<feeditem>,var clicklistener : clicklistener ) : RecyclerView.Adapter<feedadapter.ViewHolder>(){
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun insert(item: feeditem, id: Int, action: clicklistener) {
             view.findViewById<ImageView>(R.id.feed_photo).load(item.photo)
+            view.findViewById<CircleImageView>(R.id.fp_feed).load(item.fp)
             view.findViewById<TextView>(R.id.feed_name).text = item.name
             view.findViewById<MaterialTextView>(R.id.feed_user).text = item.username
             view.findViewById<MaterialTextView>(R.id.feed_caption).text = item.content

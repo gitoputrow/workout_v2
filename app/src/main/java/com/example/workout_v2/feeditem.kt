@@ -9,5 +9,6 @@ class feeditem (
     val name: String? = null,
     val username: String? = null,
     val postid: String? = null,
-    val content: String? = null
+    val content: String? = null,
+    val fp: String? = null
 )

@@ -14,12 +14,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/fp_constribute"
+            android:id="@+id/fp_komen"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/profile3"
+            android:src="@drawable/profile2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -38,11 +38,11 @@
             android:layout_marginTop="3dp"
             android:textSize="14dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/fp_constribute"
+            app:layout_constraintBottom_toBottomOf="@+id/fp_komen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/fp_constribute"
-            app:layout_constraintTop_toTopOf="@+id/fp_constribute"
+            app:layout_constraintStart_toEndOf="@+id/fp_komen"
+            app:layout_constraintTop_toTopOf="@+id/fp_komen"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
