@@ -5,8 +5,10 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.textfield.TextInputEditText
@@ -24,7 +26,6 @@ class register : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance().getReference()
         val storage = Firebase.storage("gs://workout-v2-3f3b3.appspot.com").reference
         findViewById<ImageView>(R.id.back_regist).setOnClickListener {
-            startActivity(Intent(this,Login::class.java))
             finish()
         }
         findViewById<Button>(R.id.button_regist).setOnClickListener {
@@ -49,6 +50,8 @@ class register : AppCompatActivity() {
                                 Toast.makeText(baseContext,"Username already taken",Toast.LENGTH_SHORT).show()
                             }
                             else{
+                                findViewById<Button>(R.id.button_regist).visibility = View.INVISIBLE
+                                findViewById<ProgressBar>(R.id.progressBar_regist).visibility = View.VISIBLE
                                 var hashMapdata = HashMap<String,Any>()
                                 hashMapdata.put("name",findViewById<TextInputEditText>(R.id.nameinput).text.toString())
                                 hashMapdata.put("username",findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString())
@@ -69,7 +72,6 @@ class register : AppCompatActivity() {
                                                     database.child("data${findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString()}")
                                                             .child("MuscleProgress")
                                                             .setValue(hashMapmuscle).addOnSuccessListener {
-                                                                startActivity(Intent(this@register,Login::class.java))
                                                                 finish()
                                                             }
                                                 }
@@ -84,5 +86,10 @@ class register : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

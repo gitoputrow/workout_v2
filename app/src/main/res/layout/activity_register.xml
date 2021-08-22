@@ -172,9 +172,9 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="631dp"
-        android:translationZ="-1dp"
         android:layout_height="1228dp"
         android:alpha="0.7"
+        android:translationZ="-1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -207,6 +207,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/backarrow_white" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_regist"
+        style="?android:attr/progressBarStyle"
+        android:translationZ="2dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordinput_regist" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

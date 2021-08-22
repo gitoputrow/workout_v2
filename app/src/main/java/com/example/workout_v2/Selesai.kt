@@ -13,6 +13,7 @@ class Selesai : AppCompatActivity() {
         findViewById<ImageView>(R.id.selesaii).setOnClickListener {
             val ahli = Intent(this,MainActivity::class.java)
             ahli.putExtra("username",ambil.getStringExtra("username").toString())
+            ahli.putExtra("current","workout")
             startActivity(ahli)
             finish()
         }

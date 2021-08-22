@@ -172,20 +172,7 @@
                 app:layout_constraintTop_toTopOf="@+id/workout5_med"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/nama_workoutlist6_med"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Crunch Sit Up"
-                android:textColor="@color/white"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.082"
-                app:layout_constraintStart_toEndOf="@+id/workout6_med"
-                app:layout_constraintTop_toTopOf="@+id/workout6_med"
-                app:layout_constraintVertical_bias="0.0" />
+
 
             <TextView
                 android:id="@+id/reps_workoutlist_med"
@@ -262,22 +249,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist5_med"
                 app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
-                android:id="@+id/reps_workoutlist6_med"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="x 10"
-                android:textColor="@color/white"
-                android:textSize="23dp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/workout6_med"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/nama_workoutlist6_med"
-                app:layout_constraintTop_toBottomOf="@+id/nama_workoutlist6_med"
-                app:layout_constraintVertical_bias="1.0
-" />
-
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/workout1_med"
                 android:layout_width="140dp"
@@ -343,23 +314,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/workout4_med"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <pl.droidsonroids.gif.GifImageView
-                android:id="@+id/workout6_med"
-                android:layout_width="140dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="29dp"
-                android:src="@drawable/crunchsitup"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/workout5_med"
-                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_med"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="550dp"

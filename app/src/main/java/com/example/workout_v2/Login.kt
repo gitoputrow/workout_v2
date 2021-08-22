@@ -36,6 +36,7 @@ class Login : AppCompatActivity() {
                                val pindah = Intent(this@Login,MainActivity::class.java)
                                pindah.putExtra("username",username)
                                pindah.putExtra("current","workout")
+                               finish()
                                startActivity(pindah)
                            }
                            else{
