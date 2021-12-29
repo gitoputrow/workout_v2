@@ -4,7 +4,7 @@
         android:icon="@drawable/workout"
         android:title="Workout" />
     <item android:id="@+id/ic_profile"
-        android:icon="@drawable/profile"
+        android:icon="@drawable/profile1"
         android:title="Profile"/>
     <item android:id="@+id/ic_home"
         android:icon="@drawable/home"

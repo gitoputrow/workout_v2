@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#4a4848"
+    android:background="#393737"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailPost">
@@ -51,7 +51,7 @@
         android:id="@+id/fp_detail"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:src="@drawable/profile"
+        android:src="@drawable/profile1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.041"
@@ -290,35 +290,38 @@
         app:srcCompat="@drawable/tempat_sampah" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:translationZ="6dp"
         android:id="@+id/popup_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#853C3B3B"
+        android:translationZ="6dp"
         android:visibility="invisible"
-        android:background="#853C3B3B">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <LinearLayout
             android:id="@+id/option"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@drawable/layout_option"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Do you Want To Delete This Post?"
-                android:textSize="12dp"
-                android:textColor="#65BAAD"/>
+                android:textColor="#65BAAD"
+                android:textSize="12dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -360,6 +363,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

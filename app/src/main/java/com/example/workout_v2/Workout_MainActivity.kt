@@ -22,26 +22,46 @@ class Workout_MainActivity : AppCompatActivity() {
     val woabsres :List<Int> = listOf(R.drawable.crunchsitup,R.drawable.situp,R.drawable.legraise,R.drawable.plank)
     val namewoabs :List<String> = listOf("Crunch Sit Up","Sit Up","Leg Raise","Plank")
     val repsabs :List<String> = listOf("6","6","8")
+    val woabsres_med :List<Int> = listOf(R.drawable.crunchsitup,R.drawable.situp,R.drawable.legraise,R.drawable.crunchbicyle,R.drawable.plank)
+    val namewoabs_med :List<String> = listOf("Crunch Sit Up","Sit Up","Leg Raise","Bicycle Crunches","Plank")
+    val repsabs_med :List<String> = listOf("8","8","8","8")
     val woarmres :List<Int> = listOf(R.drawable.kneepu,R.drawable.triceps_dips,R.drawable.mountain_climb,R.drawable.plank)
     val namewoarm :List<String> = listOf("Knee Push Up","Tricep Dips","Mountain Climb","Plank")
     val repsarm :List<String> = listOf("6","8","8")
+    val woarmres_med :List<Int> = listOf(R.drawable.pushup,R.drawable.triceps_dips,R.drawable.mountain_climb,R.drawable.st,R.drawable.du)
+    val namewoarm_med :List<String> = listOf("Push Up","Tricep Dips","Mountain Climb","Shoulder Tap","Diamond Push Up")
+    val repsarm_med :List<String> = listOf("6","10","8","10","6")
     val wochestres :List<Int> = listOf(R.drawable.wallpu,R.drawable.triceps_dips,R.drawable.icpu,R.drawable.kneepu)
     val namewochest :List<String> = listOf("Wall Push Up","Tricep Dips","Incline Push Up","Knee Push Up")
     val repschest :List<String> = listOf("6","4","6","6")
+    val wochestres_med :List<Int> = listOf(R.drawable.icpu,R.drawable.pushup,R.drawable.decup,R.drawable.wpu,R.drawable.du)
+    val namewochest_med :List<String> = listOf("Incline Push Up","Push Up","Decline Push Up","Wide Push Up","Diamond Push Up")
+    val repschest_med :List<String> = listOf("8","8","8","6","6")
     val wofullres :List<Int> = listOf(R.drawable.crunchsitup,R.drawable.kneepu,R.drawable.naikturun,R.drawable.plank)
     val namewofull :List<String> = listOf("Crunch Sit Up","Knee Push Up","Step Up and Down Onto Chair","Plank")
     val repsfull :List<String> = listOf("6","6","8")
+    val wofullres_med :List<Int> = listOf(R.drawable.crunchsitup,R.drawable.pushup,R.drawable.naikturun,R.drawable.mountain_climb,R.drawable.plank)
+    val namewofull_med :List<String> = listOf("Crunch Sit Up","Push Up","Step Up and Down","Mountain Climb","Plank")
+    val repsfull_med :List<String> = listOf("6","6","8","8")
     val wolegres :List<Int> = listOf(R.drawable.straight_leg_raise_left,R.drawable.straight_leg_raise_right,R.drawable.jinjit2,R.drawable.naikturun)
     val namewoleg :List<String> = listOf("Straight leg raise L","Straight leg raise R","TipToe","Step Up and Down")
     val repsleg :List<String> = listOf("6","6","8","6")
+    val wolegres_med :List<Int> = listOf(R.drawable.straight_leg_raise_left,R.drawable.straight_leg_raise_right,R.drawable.jinjit2,R.drawable.naikturun,R.drawable.squat)
+    val namewoleg_med :List<String> = listOf("Straight leg raise L","Straight leg raise R","TipToe","Step Up and Down","Squat")
+    val repsleg_med :List<String> = listOf("8","8","8","6","6")
     val database = FirebaseDatabase.getInstance().getReference()
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout__main)
-        findViewById<Chronometer>(R.id.lastreps_time).base = SystemClock.elapsedRealtime() - 30000
-        var i = 0
         var ambil = intent
+        if (ambil.getStringExtra("level").toString().equals("easy")){
+            findViewById<Chronometer>(R.id.lastreps_time).base = SystemClock.elapsedRealtime() - 30000
+        }
+        else if (ambil.getStringExtra("level").toString().equals("medium")){
+            findViewById<Chronometer>(R.id.lastreps_time).base = SystemClock.elapsedRealtime() - 40000
+        }
+        var i = 0
         if (i == 0){
             train(ambil,ambil.getStringExtra("day").toString(),i)
         }
@@ -71,10 +91,39 @@ class Workout_MainActivity : AppCompatActivity() {
                     Log.d(ContentValues.TAG, i.toString())
                 }
             }
+            else if (ambil.getStringExtra("level").toString().equals("medium")){
+                if (i == 5){
+                    database.child("data${ambil.getStringExtra("username").toString()}").child("MuscleProgress")
+                            .child(ambil.getStringExtra("muscle").toString().toLowerCase()).addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onCancelled(error: DatabaseError) {
+                                    TODO("Not yet implemented")
+                                }
+
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    var persen = snapshot.value.toString().toInt()
+                                    muscle_kondisi(persen,ambil)
+                                }
+                            })
+                    var ahli = Intent(this,Selesai::class.java)
+                    ahli.putExtra("username",ambil.getStringExtra("username").toString())
+                    startActivity(ahli)
+                    finish()
+                }
+                else {
+                    startActivity(Intent(this, RestActivity::class.java))
+                    train(ambil, ambil.getStringExtra("day").toString(), i)
+                    Log.d(ContentValues.TAG, i.toString())
+                }
+            }
         }
         findViewById<ImageView>(R.id.play).setOnClickListener {
             findViewById<ImageView>(R.id.next_workout).visibility = View.VISIBLE
-            findViewById<Chronometer>(R.id.lastreps_time).base = SystemClock.elapsedRealtime() + 30000
+            if (ambil.getStringExtra("level").toString().equals("easy")){
+                findViewById<Chronometer>(R.id.lastreps_time).base = SystemClock.elapsedRealtime() + 30000
+            }
+            else if (ambil.getStringExtra("level").toString().equals("medium")){
+                findViewById<Chronometer>(R.id.lastreps_time).base = SystemClock.elapsedRealtime() + 40000
+            }
             findViewById<Chronometer>(R.id.lastreps_time).setCountDown(true)
             findViewById<Chronometer>(R.id.lastreps_time).start()
             it.visibility = View.INVISIBLE
@@ -90,30 +139,59 @@ class Workout_MainActivity : AppCompatActivity() {
             if (ambil.getStringExtra("level").toString().equals("easy")){
                 training_easy(day,i,ambil.getStringExtra("muscle").toString(),repsabs,woabsres,namewoabs)
             }
+            else if(ambil.getStringExtra("level").toString().equals("medium")){
+                training_med(day,i,ambil.getStringExtra("muscle").toString(),repsabs_med,woabsres_med,namewoabs_med)
+            }
         }
         else if (ambil.getStringExtra("muscle").toString().equals("Arm")){
             if (ambil.getStringExtra("level").toString().equals("easy")){
                 training_easy(day,i,ambil.getStringExtra("muscle").toString(),repsarm,woarmres,namewoarm)
+            }
+            else if(ambil.getStringExtra("level").toString().equals("medium")){
+                training_med(day,i,ambil.getStringExtra("muscle").toString(),repsarm_med,woarmres_med,namewoarm_med)
             }
         }
         else if (ambil.getStringExtra("muscle").toString().equals("Full body")){
             if (ambil.getStringExtra("level").toString().equals("easy")){
                 training_easy(day,i,ambil.getStringExtra("muscle").toString(),repsfull,wofullres,namewofull)
             }
+            else if(ambil.getStringExtra("level").toString().equals("medium")){
+                training_med(day,i,ambil.getStringExtra("muscle").toString(),repsfull_med,wofullres_med,namewofull_med)
+            }
         }
         else if (ambil.getStringExtra("muscle").toString().equals("Chest")){
             if (ambil.getStringExtra("level").toString().equals("easy")){
                 training_easy(day,i,ambil.getStringExtra("muscle").toString(),repschest,wochestres,namewochest)
+            }
+            else if (ambil.getStringExtra("level").toString().equals("medium")){
+                training_easy(day,i,ambil.getStringExtra("muscle").toString(),repschest_med,wochestres_med,namewochest_med)
             }
         }
         else if (ambil.getStringExtra("muscle").toString().equals("Leg")){
             if (ambil.getStringExtra("level").toString().equals("easy")){
                 training_easy(day,i,ambil.getStringExtra("muscle").toString(),repsleg,wolegres,namewoleg)
             }
+            else if (ambil.getStringExtra("level").toString().equals("medium")){
+                training_easy(day,i,ambil.getStringExtra("muscle").toString(),repsleg_med,wolegres_med,namewoleg_med)
+            }
         }
     }
     fun training_easy(day: String,i: Int,muscle : String,reps : List<String>,source : List<Int>,namewo : List<String>){
         if (i == 3 && (muscle.equals("Abs") || muscle.equals("Arm") || muscle.equals("Full body"))) {
+            findViewById<TextView>(R.id.workout_reps).visibility = View.INVISIBLE
+            findViewById<Chronometer>(R.id.lastreps_time).visibility = View.VISIBLE
+            findViewById<ImageView>(R.id.play).visibility = View.VISIBLE
+            findViewById<ImageView>(R.id.next_workout).visibility = View.INVISIBLE
+        }
+        else{
+            findViewById<TextView>(R.id.workout_reps).setText("x ${(reps[i].toInt() + ((day.toInt() - 1) * 2)).toString()}")
+        }
+        findViewById<GifImageView>(R.id.train_anim).setImageResource(source[i])
+        findViewById<TextView>(R.id.workout_names).setText(namewo[i])
+    }
+
+    fun training_med(day: String,i: Int,muscle : String,reps : List<String>,source : List<Int>,namewo : List<String>){
+        if (i == 4 && (muscle.equals("Abs") || muscle.equals("Full body"))) {
             findViewById<TextView>(R.id.workout_reps).visibility = View.INVISIBLE
             findViewById<Chronometer>(R.id.lastreps_time).visibility = View.VISIBLE
             findViewById<ImageView>(R.id.play).visibility = View.VISIBLE
@@ -136,7 +214,7 @@ class Workout_MainActivity : AppCompatActivity() {
         if (ambil.getStringExtra("level").toString().equals("medium")){
             index = ambil.getStringExtra("day").toString().toInt() + 6
         }
-        if (ambil.getStringExtra("level").toString().equals("medium")){
+        if (ambil.getStringExtra("level").toString().equals("hard")){
             index = ambil.getStringExtra("day").toString().toInt() + 13
         }
         if (persen == kondisi[index]) {

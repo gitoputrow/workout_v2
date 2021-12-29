@@ -40,6 +40,8 @@ class register : AppCompatActivity() {
                     Toast.makeText(baseContext,"Username can't contain any spaces",Toast.LENGTH_SHORT).show()
                 }
                 else{
+                    findViewById<Button>(R.id.button_regist).visibility = View.INVISIBLE
+                    findViewById<ProgressBar>(R.id.progressBar_regist).visibility = View.VISIBLE
                     database.addListenerForSingleValueEvent(object : ValueEventListener{
                         override fun onCancelled(error: DatabaseError) {
                             TODO("Not yet implemented")
@@ -50,8 +52,6 @@ class register : AppCompatActivity() {
                                 Toast.makeText(baseContext,"Username already taken",Toast.LENGTH_SHORT).show()
                             }
                             else{
-                                findViewById<Button>(R.id.button_regist).visibility = View.INVISIBLE
-                                findViewById<ProgressBar>(R.id.progressBar_regist).visibility = View.VISIBLE
                                 var hashMapdata = HashMap<String,Any>()
                                 hashMapdata.put("name",findViewById<TextInputEditText>(R.id.nameinput).text.toString())
                                 hashMapdata.put("username",findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString())

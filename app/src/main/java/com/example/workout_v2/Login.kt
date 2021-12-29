@@ -27,7 +27,7 @@ class Login : AppCompatActivity() {
                 var passwword = findViewById<TextInputEditText>(R.id.passwordinput).text.toString()
                 database.addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
+
                     }
 
                     override fun onDataChange(snapshot: DataSnapshot) {

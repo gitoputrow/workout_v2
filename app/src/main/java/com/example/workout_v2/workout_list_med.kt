@@ -13,7 +13,7 @@ class workout_list_med : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout_list_med)
-        val woabsres :List<Int> = listOf(R.drawable.crunchsitup,R.drawable.situp,R.drawable.legraise,R.drawable.plank)
+        val woabsres :List<Int> = listOf(R.drawable.crunchsitup,R.drawable.situp,R.drawable.legraise,R.drawable.crunchbicyle,R.drawable.plank)
         val namewoabs :List<String> = listOf("Crunch Sit Up","Sit Up","Leg Raise","Bicycle Crunches","Plank")
         val repsabs :List<String> = listOf("8","8","8","8")
         val woarmres :List<Int> = listOf(R.drawable.pushup,R.drawable.triceps_dips,R.drawable.mountain_climb,R.drawable.st,R.drawable.du)

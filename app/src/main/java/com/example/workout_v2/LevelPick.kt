@@ -19,6 +19,7 @@ class LevelPick : AppCompatActivity() {
         findViewById<ImageView>(R.id.back_level).setOnClickListener {
             val ahli = Intent(this,MainActivity::class.java)
             ahli.putExtra("username",ambil.getStringExtra("username").toString())
+            ahli.putExtra("current","workout")
             startActivity(ahli)
         }
         findViewById<ImageView>(R.id.easy).setOnClickListener {
