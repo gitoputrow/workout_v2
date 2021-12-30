@@ -12,6 +12,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -25,6 +26,7 @@ class register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         val database = FirebaseDatabase.getInstance().getReference()
         val storage = Firebase.storage("gs://workout-v2-3f3b3.appspot.com").reference
+        val firebaseauth = FirebaseAuth.getInstance()
         findViewById<ImageView>(R.id.back_regist).setOnClickListener {
             finish()
         }
@@ -40,8 +42,6 @@ class register : AppCompatActivity() {
                     Toast.makeText(baseContext,"Username can't contain any spaces",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    findViewById<Button>(R.id.button_regist).visibility = View.INVISIBLE
-                    findViewById<ProgressBar>(R.id.progressBar_regist).visibility = View.VISIBLE
                     database.addListenerForSingleValueEvent(object : ValueEventListener{
                         override fun onCancelled(error: DatabaseError) {
                             TODO("Not yet implemented")
@@ -52,33 +52,44 @@ class register : AppCompatActivity() {
                                 Toast.makeText(baseContext,"Username already taken",Toast.LENGTH_SHORT).show()
                             }
                             else{
-                                var hashMapdata = HashMap<String,Any>()
-                                hashMapdata.put("name",findViewById<TextInputEditText>(R.id.nameinput).text.toString())
-                                hashMapdata.put("username",findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString())
-                                hashMapdata.put("password",findViewById<TextInputEditText>(R.id.passwordinput_regist).text.toString())
-                                hashMapdata.put("email",findViewById<TextInputEditText>(R.id.emailinput_regist).text.toString())
-                                var hashMapmuscle = HashMap<String,Any>()
-                                hashMapmuscle.put("full body","0")
-                                hashMapmuscle.put("abs","0")
-                                hashMapmuscle.put("chest","0")
-                                hashMapmuscle.put("arm","0")
-                                hashMapmuscle.put("leg","0")
-                                storage.child("profile2.png").downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri>{
-                                    override fun onSuccess(p0: Uri?) {
-                                        hashMapdata.put("fp",p0.toString())
-                                        database.child("data${findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString()}")
-                                                .setValue(hashMapdata)
-                                                .addOnSuccessListener {
+                                if (findViewById<TextInputEditText>(R.id.passwordinput_regist).text.toString().length < 6){
+                                    Toast.makeText(baseContext,"Password must be 6 character",Toast.LENGTH_SHORT).show()
+                                }
+                                else{
+                                    findViewById<Button>(R.id.button_regist).visibility = View.INVISIBLE
+                                    findViewById<ProgressBar>(R.id.progressBar_regist).visibility = View.VISIBLE
+                                    var hashMapdata = HashMap<String,Any>()
+                                    hashMapdata.put("name",findViewById<TextInputEditText>(R.id.nameinput).text.toString())
+                                    hashMapdata.put("username",findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString())
+                                    hashMapdata.put("password",findViewById<TextInputEditText>(R.id.passwordinput_regist).text.toString())
+                                    hashMapdata.put("email",findViewById<TextInputEditText>(R.id.emailinput_regist).text.toString())
+                                    var hashMapmuscle = HashMap<String,Any>()
+                                    hashMapmuscle.put("full body","0")
+                                    hashMapmuscle.put("abs","0")
+                                    hashMapmuscle.put("chest","0")
+                                    hashMapmuscle.put("arm","0")
+                                    hashMapmuscle.put("leg","0")
+                                    val email = findViewById<TextInputEditText>(R.id.emailinput_regist).text.toString()
+                                    val pass = findViewById<TextInputEditText>(R.id.passwordinput_regist).text.toString()
+                                    firebaseauth.createUserWithEmailAndPassword(email,pass)
+                                        .addOnSuccessListener {
+                                            storage.child("profile2.png").downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri>{
+                                                override fun onSuccess(p0: Uri?) {
+                                                    hashMapdata.put("fp",p0.toString())
                                                     database.child("data${findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString()}")
-                                                            .child("MuscleProgress")
-                                                            .setValue(hashMapmuscle).addOnSuccessListener {
-                                                                finish()
-                                                            }
+                                                        .setValue(hashMapdata)
+                                                        .addOnSuccessListener {
+                                                            database.child("data${findViewById<TextInputEditText>(R.id.usernameinput_regist).text.toString()}")
+                                                                .child("MuscleProgress")
+                                                                .setValue(hashMapmuscle).addOnSuccessListener {
+                                                                    finish()
+                                                                }
+                                                        }
                                                 }
-                                    }
 
-                                })
-
+                                            })
+                                        }
+                                }
                             }
                         }
 
