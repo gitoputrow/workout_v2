@@ -21,6 +21,7 @@ class LevelPick : AppCompatActivity() {
             ahli.putExtra("username",ambil.getStringExtra("username").toString())
             ahli.putExtra("current","workout")
             startActivity(ahli)
+            finish()
         }
         findViewById<ImageView>(R.id.easy).setOnClickListener {
             pindah(ambil, "easy")
