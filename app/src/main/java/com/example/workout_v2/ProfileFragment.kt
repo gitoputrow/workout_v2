@@ -21,6 +21,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -34,6 +35,7 @@ class ProfileFragment : Fragment() {
     val database = FirebaseDatabase.getInstance().getReference()
     val storage = Firebase.storage("gs://workout-v2-3f3b3.appspot.com").reference
     var x = ""
+    val firebaseAuth = FirebaseAuth.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -51,6 +53,11 @@ class ProfileFragment : Fragment() {
         val ambil :String = this.requireArguments().getString("username").toString()
         x = ambil
         view.findViewById<TextView>(R.id.username_profile).setText(ambil)
+        view.findViewById<TextView>(R.id.logout).setOnClickListener {
+            firebaseAuth.signOut()
+            startActivity(Intent(activity,Login::class.java))
+            requireActivity().finish()
+        }
         view.findViewById<CircleImageView>(R.id.foto_profile).setOnClickListener {
             val array = arrayOf("Take Picture","Select Picture","cancel")
             val builder = AlertDialog.Builder(requireContext())
