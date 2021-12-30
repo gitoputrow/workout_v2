@@ -21,8 +21,8 @@
         <activity android:name=".DayActivity" />
         <activity android:name=".LevelPick" />
         <activity android:name=".register" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Login"
+        <activity android:name=".Login" />
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
