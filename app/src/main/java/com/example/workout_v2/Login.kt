@@ -20,30 +20,6 @@ class Login : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance().getReference()
         val firebaseauth = FirebaseAuth.getInstance()
         val firebaseAuthuserLogin = firebaseauth.currentUser
-        if (firebaseAuthuserLogin != null){
-            val email = firebaseAuthuserLogin.email
-            database.addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (childmain in snapshot.children){
-                        var childdata = childmain.key.toString()
-                        var emailUser = snapshot.child(childdata).child("email").value.toString()
-                        var username = snapshot.child(childdata).child("username").value.toString()
-                        if (email.toString().equals(emailUser)){
-                            val pindah = Intent(this@Login,MainActivity::class.java)
-                            pindah.putExtra("username",username)
-                            pindah.putExtra("current","workout")
-                            finish()
-                            startActivity(pindah)
-                        }
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })
-        }
         findViewById<TextView>(R.id.textView_regist).setOnClickListener {
             startActivity(Intent(this,register::class.java))
         }
